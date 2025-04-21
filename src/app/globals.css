@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  font-family: "Maison Neue", sans-serif !important;
+}
+
+@font-face {
+  font-family: "Maison Neue";
+  src: url("../../public/assets/fonts/maison/fonnts.com-Maison_Neue_Light.ttf");
+}
+
+@font-face {
+  font-family: "Söhne";
+  src: url("../../public/assets/fonts/sohne-font-family/TestSohne-DreiviertelfettKursiv-BF663d89cd2f687.otf");
+}
+
+/* 
+.ff_maison {
+  font-family: "Maison Neue", sans-serif !important;
+} */
+
+.ff_sohne {
+  font-family: "Sohne", sans-serif !important;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background-image-product: url("/assets/images/png/product-into-lowe.png");
+  --background-digital-leads: url("/assets/images/png/digital-leads.png");
+  --background-material: url("/assets/images/png/material.png");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .bg-product {
+    background: var(--background-image-product);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .bg-digital-leads {
+    background: var(--background-digital-leads);
+  }
+
+  .bg-material {
+    background: var(--background-material);
+  }
+
+  .bg-full {
+    background-size: 100% 100%;
+  }
+
+  .swiper-slide {
+    display: flex !important;
+    justify-content: center;
+  }
 }

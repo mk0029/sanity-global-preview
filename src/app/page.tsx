@@ -1,10 +1,17 @@
-import Dummy from "@/components/Dummy";
-import Posts from "@/components/Posts";
+
+import Header from "@/components/Header";
+import LeadCard from "@/components/LeadCard";
+import LeadDetail from "@/components/LeadDetail";
+// import Dummy from "@/components/Dummy";
+// import Posts from "@/components/Posts";
 
 export default function Home() {
   return (
     <>
-      <Dummy /> <Posts />
+      <Header />
+      <LeadCard />
+      <LeadDetail/>
+      {/* <Dummy /> <Posts /> */}
     </>
   );
 }
