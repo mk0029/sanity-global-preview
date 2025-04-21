@@ -10,7 +10,7 @@ interface LeadCardData {
 
 const Header: React.FC = () => {
     return (
-        <div className=''>
+        <div className='max-w-[1536px] mx-auto'>
             {LEAD_CARD_DATA_LIST.slice(0, 1).map((obj: LeadCardData, i: number) => (
                 <div key={i} className='flex max-lg:flex-wrap gap-2 items-center justify-between max-lg:py-10
                 '>
