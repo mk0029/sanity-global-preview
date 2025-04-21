@@ -27,6 +27,7 @@
   --background-image-product: url("/assets/images/png/product-into-lowe.png");
   --background-digital-leads: url("/assets/images/png/digital-leads.png");
   --background-material: url("/assets/images/png/material.png");
+  --breakpoint-custom-xl: 1400px
 }
 
 @layer utilities {
