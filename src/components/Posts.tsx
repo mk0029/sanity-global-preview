@@ -83,22 +83,29 @@ export default async function Posts() {
                     )}
                     <h2>Content</h2>
 
-                    {post.body.map((obj: any, index: any) => {
-                      return (
-                        <div key={index}>
-                          <h2> {obj.heading}</h2>
-                          <p>{obj.text}</p>
-                          {obj?.content?.map((objX, ind) =>
-                            objX.children.map((objY, indX) => (
-                              <div
-                                className="dynemic-html-content-from-server"
-                                dangerouslySetInnerHTML={{ __html: objY.text }}
-                                key={ind + indX}></div>
-                            ))
-                          )}
-                        </div>
-                      );
-                    })}
+                    {
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      post.body.map((obj: any, index: number) => {
+                        return (
+                          <div key={index}>
+                            <h2> {obj.heading}</h2>
+                            <p>{obj.text}</p>
+                            {// eslint-disable-next-line @typescript-eslint/no-explicit-any
+                            obj?.content?.map((objX: any, ind: number) =>
+                              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                              objX.children.map((objY: any, indX: number) => (
+                                <div
+                                  className="dynemic-html-content-from-server"
+                                  dangerouslySetInnerHTML={{
+                                    __html: objY.text,
+                                  }}
+                                  key={ind + indX}></div>
+                              ))
+                            )}
+                          </div>
+                        );
+                      })
+                    }
                   </div>
                 </div>
               )}
