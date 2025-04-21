@@ -23,7 +23,7 @@ const NavBar: React.FC = () => {
         }
     }
     return (
-        <div className="max-w-[1536px] mx-auto">
+        <div className="max-w-[1536px] mx-auto max-lg:p-5">
             <div className="flex justify-between ">
                 <a href="" className="lg:ps-[57px] ps-5 ">
                     <Image
