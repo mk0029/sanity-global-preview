@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import { PortableText, type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/sanity/client";
 import Image from "next/image";
+import { getAuthor } from "@/lib/getAuthor";
 
 // Image builder setup
 const { projectId, dataset } = client.config();
@@ -12,7 +14,7 @@ const urlFor = (source: SanityImageSource) =>
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
-// Expanded posts query with author dereferencing
+// Query without author dereferencing
 const POSTS_QUERY = `*[
   _type == "post-ls" && defined(slug.current)
 ]|order(publishedAt desc)[0...12]{
@@ -20,12 +22,6 @@ const POSTS_QUERY = `*[
   title,
   slug,
   publishedAt,
-  author->{
-    _id,
-    name,
-    image,
-    bio
-  },
   mainImage,
   categories,
   body
@@ -42,14 +38,21 @@ export default async function Posts() {
     }
   );
 
+  // 🧠 Fetch all authors in parallel
+  const postsWithAuthors = await Promise.all(
+    posts.map(async (post) => {
+      const author = await getAuthor(post._id);
+      return { ...post, author };
+    })
+  );
+
   return (
     <main className="container mx-auto min-h-screen max-w-3xl p-8">
       <h1 className="text-4xl font-bold mb-8">Posts</h1>
 
       <ul className="flex flex-col gap-y-8">
-        {posts.map((post) => {
+        {postsWithAuthors.map((post: any) => {
           const author = post.author;
-          console.log(post.author, "maped post");
           const authorImageUrl = author?.image
             ? urlFor(author.image)?.width(80).height(80).url()
             : null;
@@ -81,6 +84,24 @@ export default async function Posts() {
                         <PortableText value={author.bio} />
                       </div>
                     )}
+                    <h2>Content</h2>
+
+                    {post?.body?.map((obj: any, index: number) => (
+                      <div key={index}>
+                        <h2>{obj.heading}</h2>
+                        <p>{obj.text}</p>
+                        {obj?.content?.map((objX: any, ind: number) =>
+                          objX.children.map((objY: any, indX: number) => (
+                            <div
+                              className="dynemic-html-content-from-server"
+                              dangerouslySetInnerHTML={{
+                                __html: objY.text,
+                              }}
+                              key={ind + indX}></div>
+                          ))
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
