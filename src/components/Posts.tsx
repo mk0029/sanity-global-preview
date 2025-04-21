@@ -41,7 +41,7 @@ export default async function Posts() {
       next: { revalidate },
     }
   );
-
+  console.log(posts[1].body[3].content[0].children, "qwerty");
   return (
     <main className="container mx-auto min-h-screen max-w-3xl p-8">
       <h1 className="text-4xl font-bold mb-8">Posts</h1>
@@ -81,6 +81,24 @@ export default async function Posts() {
                         <PortableText value={author.bio} />
                       </div>
                     )}
+                    <h2>Content</h2>
+
+                    {post.body.map((obj: any, index: any) => {
+                      return (
+                        <div key={index}>
+                          <h2> {obj.heading}</h2>
+                          <p>{obj.text}</p>
+                          {obj?.content?.map((objX, ind) =>
+                            objX.children.map((objY, indX) => (
+                              <div
+                                className="dynemic-html-content-from-server"
+                                dangerouslySetInnerHTML={{ __html: objY.text }}
+                                key={ind + indX}></div>
+                            ))
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
