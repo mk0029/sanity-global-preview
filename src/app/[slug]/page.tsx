@@ -1,13 +1,6 @@
 import Detail from "@/components/Detail";
-
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-const Page = ({ params }: Props) => {
-  return <Detail params={params} />;
+const Page = () => {
+  return <Detail />;
 };
 
 export default Page;
