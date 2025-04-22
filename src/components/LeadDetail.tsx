@@ -9,18 +9,15 @@ import { usePathname } from "next/navigation";
 interface list {
   data: any;
 }
-
 const LeadDetail = ({ data: posts }: list) => {
   const { projectId, dataset } = client.config();
   const urlFor = (source: SanityImageSource) =>
     projectId && dataset
       ? imageUrlBuilder({ projectId, dataset }).image(source)
       : null;
-
   const pathname = usePathname();
   const slug = pathname.replace("/card/", "");
   const filteredList = posts.filter((obj: any) => obj.slug.current === slug);
-  console.log(filteredList[0].detail, "filteredList filteredListfilteredList");
   return (
     <div className="py-20">
       {filteredList?.map((obj: any, i: number) => {

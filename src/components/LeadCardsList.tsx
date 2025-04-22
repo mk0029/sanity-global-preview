@@ -6,7 +6,6 @@ import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Image from "next/image";
-
 interface LeadCardsListClientProps {
   visibleCount: number;
   posts: any[];
