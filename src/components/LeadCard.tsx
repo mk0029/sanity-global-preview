@@ -52,7 +52,7 @@ const LeadCard: React.FC<LeadCardProps> = ({ data: posts }) => {
   };
 
   return (
-    <div className="pt-20 container mx-auto">
+    <div className="pt-20 container mx-auto px-5">
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-4 gap-3 justify-center mb-4">
         <LeadCardsList visibleCount={visibleCount} posts={posts} />
       </div>
