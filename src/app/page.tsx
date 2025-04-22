@@ -1,17 +1,15 @@
-
+import AsyncDataWrapper from "@/components/common/AsyncDataWrapper";
 import Header from "@/components/Header";
 import LeadCard from "@/components/LeadCard";
-import LeadDetail from "@/components/LeadDetail";
-// import Dummy from "@/components/Dummy";
-// import Posts from "@/components/Posts";
+import { getBlogPosts } from "@/lib/blog-post";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <LeadCard />
-      <LeadDetail/>
-      {/* <Dummy /> <Posts /> */}
+      <AsyncDataWrapper
+        Component={LeadCard}
+        fetcher={() => getBlogPosts()}></AsyncDataWrapper>
     </>
   );
 }

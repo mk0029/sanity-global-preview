@@ -12,6 +12,7 @@ export async function getBlogPosts() {
     readTime,
     detailImage,
     publishedAt,
+    detail,
     author->{
       _id,
       name,
