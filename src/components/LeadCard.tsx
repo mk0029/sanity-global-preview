@@ -2,7 +2,7 @@
 "use client";
 import React, { useState } from "react";
 import LeadCardsList from "./LeadCardsList";
-import Loading from "./Loading";
+import Loading from "./common/Loading";
 
 interface LeadCardProps {
   data: any[];
