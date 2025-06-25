@@ -1,15 +1,16 @@
 import AsyncDataWrapper from "@/components/common/AsyncDataWrapper";
-import Header from "@/components/Header";
-import LeadCard from "@/components/LeadCard";
-import { getBlogPosts } from "@/lib/blog-post";
+import SocketAndSwitch from "@/components/price-list/SocketAndSwitch";
+import { getSocketAndSwitches } from "@/lib/getSocketAndSwitches";
 
 export default function Home() {
   return (
     <>
-      <Header />
+      {/* <AsyncDataWrapper
+        Component={Student}
+        fetcher={() => getPosts()}></AsyncDataWrapper> */}
       <AsyncDataWrapper
-        Component={LeadCard}
-        fetcher={() => getBlogPosts()}></AsyncDataWrapper>
+        Component={SocketAndSwitch}
+        fetcher={() => getSocketAndSwitches()}></AsyncDataWrapper>
     </>
   );
 }

@@ -27,7 +27,7 @@
   --background-image-product: url("/assets/images/png/product-into-lowe.png");
   --background-digital-leads: url("/assets/images/png/digital-leads.png");
   --background-material: url("/assets/images/png/material.png");
-  --breakpoint-custom-xl: 1400px
+  --breakpoint-custom-xl: 1400px;
 }
 
 @layer utilities {
@@ -51,4 +51,40 @@
     display: flex !important;
     justify-content: center;
   }
+}
+.container {
+  @apply px-5 mx-auto max-w-[1180px] ;
+}
+.detail__info__bl0g p {
+  @apply text-base text-gray-900 leading-relaxed mb-4;
+}
+
+.detail__info__bl0g h2 {
+  @apply text-2xl font-bold text-black mb-4;
+}
+.detail__info__bl0g h4 {
+  @apply text-lg font-bold text-cyan-500 mb-4;
+}
+
+/* List types blog */
+/* Normal List */
+.detail__info__bl0g ul.v-default,
+.detail__info__bl0g ul {
+  @apply list-[unset] text-gray-900 space-y-2 pl-4 list-outside;
+}
+/* numbered/decimal */
+.detail__info__bl0g ul.v-number {
+  @apply list-decimal;
+}
+/*  */
+
+.detail__info__bl0g ul li {
+  @apply ml-2; /* optional – adds space before list numbers */
+}
+.detail__info__bl0g ul li,
+.detail__info__bl0g ul li span:nth-child(1) {
+  @apply font-semibold text-base text-gray-800;
+}
+.detail__info__bl0g ul li p {
+  @apply font-normal text-base text-gray-600;
 }
